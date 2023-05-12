@@ -3,6 +3,7 @@ import hashlib
 from datetime import datetime
 import yaml
 import pandas as pd
+import argparse
 
 def get_file_sha256(file_path):
     with open(file_path, 'rb') as f:
@@ -177,6 +178,26 @@ def main():
     html_table = df.to_html()
 
     with open(args.output, 'w') as f:
+        f.write("""
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th {
+                text-align: center;
+                background-color: green;
+                color:white;
+            }
+            td {
+                padding: 5px;
+                text-align: left;
+                max-width: 180px;
+                word-wrap: break-word;
+                background-color: lightyellow;
+            }
+        </style>
+        """)
         f.write(html_table)
 
 if __name__ == '__main__':

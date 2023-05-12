@@ -1,11 +1,9 @@
 import argparse
 import yaml
 
-# 解析命令行参数
 parser = argparse.ArgumentParser()
 parser.add_argument('input_file', help='Input YAML file')
 parser.add_argument('output_file', help='Output HTML file')
-#parser.add_argument('css_file', help='External CSS file')
 args = parser.parse_args()
 
 # 读取YAML文件
@@ -15,6 +13,7 @@ with open(args.input_file, 'r') as f:
 # 生成HTML文件
 with open(args.output_file, 'w') as f:
     f.write('<html>\n')
+    #文件头
     f.write('<head>\n')
     f.write('<style>\n')
     f.write('body { margin: 0; padding: 0; background-color: #D1EED1 }\n')
@@ -28,8 +27,8 @@ with open(args.output_file, 'w') as f:
     f.write('li { list-style-type: none; }\n')
     f.write('</style>\n')
     f.write('<title>{}</title>\n'.format(data['Experiment_name']))
-    #f.write('<link rel="stylesheet" type="text/css" href="{}">\n'.format(args.css_file))
     f.write('</head>\n')
+    #内容部分
     f.write('<body>\n')
     f.write('<div class="container">\n')
     f.write('<div style="background-color: green; text-align: center;height: 103px">\n')
