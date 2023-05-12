@@ -1,0 +1,14 @@
+Input1: 
+  Name: 10x_data
+  Description: 10x的fastq数据
+  Source: 自测
+
+Input2: 
+  Name: 10X_ref
+  Description: 10x的参考基因组
+  Source: 10x官网，url为
+
+Input3: 
+  Name: clin_meta.xls
+  Description: 样本的临床数据
+  Source: 由医生提供
