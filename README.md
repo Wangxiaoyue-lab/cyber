@@ -2,6 +2,15 @@
 
 Comprehensive Yielding Bioinformatics Electronic Report
 
+
+
+注：
+
+script部分可以是snakemake。不过snakemake应该是task内部的设计，不可以跨task
+
+script部分可以是jupyter notebook，不过请图片保存pdf版本一份。juptyter文件转成纯代码一份
+
+
 # 文件结构
 
 ## 一级基本文件夹
@@ -106,7 +115,6 @@ task1
    3. 脚本里注意输出必要日志，严格保证控制台文件和报错文件的可读性
    4. 如若可以，尽量函数化
    5. 常用代码请模块化
-   6. 如果采取jupyter notebook，请图片保存pdf版本一份。juptyter文件转成纯代码一份
 3. output
 
    1. 图片命名严禁随意，应该标记图片类型、图片得到的关键参数、图片日期等
