@@ -39,7 +39,7 @@ project里每一个大项目为一个文件夹
 
 ## task类型
 
-### 分析型task结构
+### analysis —— 分析型task结构
 
 ```r
 task1
@@ -70,9 +70,26 @@ task1
   - log.out存储服务器产生的直接控制台输出与报错
   - report.yaml请填写当前task的相关信息以生成实验报告
 
-### 开发型task结构
+### development——开发型task结构
 
-### 调研型task结构
+### investigation——调研型task结构
+
+### exotic——外部结果型task结构
+
+```
+task1
+	process
+		process.yaml
+	input
+		description.yaml
+	output
+		picture
+		table
+		store
+	report
+		log.out
+		report.yaml
+```
 
 # 工作流
 
@@ -89,6 +106,7 @@ task1
    3. 脚本里注意输出必要日志，严格保证控制台文件和报错文件的可读性
    4. 如若可以，尽量函数化
    5. 常用代码请模块化
+   6. 如果采取jupyter notebook，请图片保存pdf版本一份。juptyter文件转成纯代码一份
 3. output
 
    1. 图片命名严禁随意，应该标记图片类型、图片得到的关键参数、图片日期等
@@ -98,12 +116,34 @@ task1
 
    1. 填写report.yaml
    2. 根据task文件夹结果生成pdf报告
-5. summarize
-
-   1. 所有task合并为一个project报告
-   2. 自动生成目录
-   3. 添加文件tree
-   4. 添加项目存储情况
-
 
 ## 开发
+
+## 调研
+
+
+## 外部结果
+
+1. input
+
+   1. 将要导出分析的文件请软链接
+   2. 包含图片AI处理
+2. process
+
+   1. 如果是软件，记录版本
+   2. 如果是网页工具，记录网址
+3. output
+
+   1. 将外部分析的结果返回保存
+
+
+## project合并
+
+
+summarize
+
+1. 所有task合并为一个project报告
+2. 自动生成目录
+3. 生成task时间线，以颜色区分task类型
+4. 添加文件tree
+5. 手动添加项目保留情况
