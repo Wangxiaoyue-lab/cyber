@@ -106,18 +106,12 @@ def get_info(path):
     df = pd.DataFrame(data)
     return df
 
-
-
-
-
 def print_supplemental_info(name, supplemental_info):
     if name in supplemental_info:
         info = supplemental_info[name]
         print(f"Description: {info.get('Description', '')}")
         print(f"Source: {info.get('Source', '')}")
         print()
-
-
 
 def print_info(path):
     yaml_file = os.path.join(path, 'description.yaml')
@@ -173,7 +167,17 @@ def print_info(path):
                 print(f"SHA256: {get_sha256(entry_path)}")
                 print_supplemental_info(name, supplemental_info)
 
-df = get_info('/public/home/caojun/module_script/for_git/cyber/project_demo/project1/1_task_analysis/input')
+def main():
+    parser = argparse.ArgumentParser(description='Get info about a directory.')
+    parser.add_argument('path', type=str, help='Path to the directory')
+    parser.add_argument('output', type=str, help='Path to the output HTML file')
+    args = parser.parse_args()
 
-html_table = df.to_html()
- 
+    df = get_info(args.path)
+    html_table = df.to_html()
+
+    with open(args.output, 'w') as f:
+        f.write(html_table)
+
+if __name__ == '__main__':
+    main()
