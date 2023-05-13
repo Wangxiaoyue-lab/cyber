@@ -98,23 +98,30 @@ def process_images(processed_images, output_folder, image_names):
     left_height = 0
     right_height = 0
     index = 1
+    left_index = 1
+    right_index = 1
     for i, image in enumerate(processed_images[:260]):
         image_name = image_names[i]
         new_image_name = "image_" + str(i) + ".png"
         new_image_path = os.path.join(image_path, new_image_name)
         image.save(new_image_path)
         label1 = string.ascii_uppercase[(index - 1) // 10]
-        label3 = index % 10 if index % 10 != 0 else 10
         if left_height <= right_height:
-            left_column += f"<img src='{new_image_path}'/><p>{label1}_L_{label3}: {image_name}</p>"
+            label2 = "L"
+            label3 = left_index
+            left_index += 1
+            left_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
             left_height += image.height
         else:
-            right_column += f"<img src='{new_image_path}'/><p>{label1}_R_{label3}: {image_name}</p>"
+            label2 = "R"
+            label3 = right_index
+            right_index += 1
+            right_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
             right_height += image.height
         index += 1
 
     if len(processed_images) > 260:
-        warning = "<p style='color:red'>Warning: too many pictures! Just represent top 260 pictures.</p >"
+        warning = "<p style='color:red'>Warning: Too many pictures to read! Just represent top 260 pictures.</p >"
         left_column += warning
         right_column += warning
 
