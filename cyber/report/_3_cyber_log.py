@@ -7,7 +7,7 @@ def save_session_info(folder_path):
     report_folder = os.path.join(folder_path, 'report')
     if not os.path.exists(report_folder):
         os.makedirs(report_folder)
-    file_name = os.path.join(report_folder, 'loading_Python_packages.txt')
+    file_name = os.path.join(report_folder, 'loading_packages_Python.txt')
     original_stdout = sys.stdout
     with open(file_name, 'w') as f:
         sys.stdout = f

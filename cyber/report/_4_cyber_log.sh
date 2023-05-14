@@ -11,5 +11,4 @@ get_version() {
 #e.g.
 cmds=(ls date uname)
 for cmd in "${cmds[@]}"; do
-    get_version $cmd >> version.txt
-done
+    get_version $cmd >> loading_packages_shell.txt

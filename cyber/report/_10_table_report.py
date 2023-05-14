@@ -4,7 +4,7 @@ from hashlib import sha256
 import argparse
 from datetime import datetime
 
-def get_files_info(directory):
+def get_tables_info(directory):
     files_info = []
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -53,7 +53,7 @@ def main():
     parser.add_argument('folder_path', type=str, help='Path to the folder containing scripts')
     parser.add_argument('output', type=str, help='Dir to the output HTML file')
     args = parser.parse_args()
-    df = get_files_info(args.folder_path)
+    df = get_tables_info(args.folder_path)
     html = to_html(df)
     with open(args.output, 'w') as f:
         f.write(html)

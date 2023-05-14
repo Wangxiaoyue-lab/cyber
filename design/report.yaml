@@ -1,24 +1,24 @@
 Pre-report:
-  Title:
-  Aim:
+  Type:
+  Title: 
+  Aim: 
   Date: 
   Location:
+  Laboratory:
   Operator:
-  Type:
   Platform:
 
 Supplement:
   - Name:
-      Path:
-      Details:
+    Path:
+    Details:
   - Name:
-      Path:
-      Details:
+    Path:
+    Details:
   - Name:
-      Path:
-      Details:
+    Path:
+    Details:
 
 Post-report:
   Discussion:
   Plan:
-

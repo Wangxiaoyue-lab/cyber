@@ -37,7 +37,7 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Y', suffix)
 
 
-def get_info(path):
+def get_files_info(path):
     yaml_file = os.path.join(path, 'description.yaml')
     with open(yaml_file, 'r') as f:
         yaml_data = yaml.safe_load(f)
@@ -174,7 +174,7 @@ def main():
     parser.add_argument('output', type=str, help='Path to the output HTML file')
     args = parser.parse_args()
 
-    df = get_info(args.path)
+    df = get_files_info(args.path)
     html_table = df.to_html()
 
     with open(args.output, 'w') as f:

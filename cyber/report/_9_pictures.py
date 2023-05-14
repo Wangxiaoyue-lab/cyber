@@ -56,36 +56,8 @@ def add_watermark(image, image_name, date):
     draw.text((x3, y3), text3, fill=(211, 211, 21, 37), font=font)
     return image
 
-
-#def process_images(processed_images, output_folder, image_names):
-#    if not os.path.exists(output_folder):
-#        os.makedirs(output_folder)
-#    image_path = os.path.join(output_folder,"px_images")
-#    os.makedirs(image_path)
-#    html = "<html><head><style>.column {float: left;width: 50%;padding: 5px;}.row:after {content: "";display: table;clear: both;}</style></head><body><div class='row'><div id='left' class='column'></div><div id='right' class='column'></div></div></body></html>"
-#    total_height = sum(image.height for image in processed_images)
-#    mid_height = total_height / 2
-#    left_column = ""
-#    right_column = ""
-#    current_height = 0
-#    index = 1
-#    for i, image in enumerate(processed_images):
-#        image_name = image_names[i]
-#        new_image_name = "image_" + str(i) + ".png"
-#        new_image_path = os.path.join(image_path, new_image_name)
-#        image.save(new_image_path)
-#        label = f"{string.ascii_uppercase[(index - 1) // 26]}_{index % 10 if index % 10 != 0 else 10}"
-#        if current_height <= mid_height:
-#            left_column += f"<img src='{new_image_path}'/><p>{label}: {image_name}</p>"
-#            current_height += image.height
-#        else:
-#            right_column += f"<img src='{new_image_path}'/><p>{label}: {image_name}</p>"
-#        index += 1
-#
-#    html = html.replace("<div id='left' class='column'></div>", f"<div id='left' class='column'>{left_column}</div>")
-#    html = html.replace("<div id='right' class='column'></div>", f"<div id='right' class='column'>{right_column}</div>")
-#    with open(os.path.join(output_folder, "px_pictures.html"), "w") as f:
-#        f.write(html)
+def divide_images(processed_images,image_names,html):
+    
 
 def process_images(processed_images, output_folder, image_names):
     if not os.path.exists(output_folder):
