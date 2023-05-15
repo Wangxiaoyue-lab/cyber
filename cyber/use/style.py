@@ -49,7 +49,23 @@ style_script = """
                 background-color: lightyellow;
             }
         </style>
-        """
+    """
 
+style_packages = """
+    .my-class {
+        border: 1px solid black;
+        padding: 10px;
+    }
 
-style_dir={'style_date':style_date, 'style_input':style_input, 'style_script':style_script}
+    .my-class p {
+        margin: 0;
+    }
+    """
+
+style_dir={
+    'style_date':style_date, 
+    'style_input':style_input, 
+    'style_script':style_script,
+    'style_packages':style_packages
+}
+
