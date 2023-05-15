@@ -1,5 +1,6 @@
 import os
 from graphviz import Digraph
+from pdf2image import convert_from_path
 import argparse
 
 def generate_file_tree(path, max_files=10):
@@ -42,6 +43,23 @@ def visualize_file_tree(tree, graph=None, depth=0, ellipsis_count=0):
                 graph.node(value, style='filled', fillcolor='#ADD8E6')
                 graph.edge(key, value)
     return graph, ellipsis_count
+
+
+def tree_to_div(folder_path):
+    file_path = os.path.join(folder_path, 'output_tree.pdf')
+    if os.path.exists(file_path):
+        images = convert_from_path(file_path)
+        image_paths = []
+        for i, image in enumerate(images):
+            image_name = 'output_tree_{}.png'.format(i)
+            image.save(os.path.join(folder_path, image_name), 'PNG')
+            image_paths.append(image_name)
+
+        div_content = ''.join(['<img src="{}">'.format(path) for path in image_paths])
+        div_element = '<div class="tree">{}</div>'.format(div_content)
+        return div_element
+    else:
+        print('output_tree.pdf not found in the specified folder')
 
 def main()
     parser = argparse.ArgumentParser(description='Get script info')

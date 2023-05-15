@@ -32,6 +32,23 @@ def get_tables_info(directory):
     df = pd.DataFrame(files_info)
     return df
 
+def tables_to_div(df):
+    html = '<div class="tables">'
+    for _, row in df.iterrows():
+        html += '<p><span class="label">file_name:</span><span class="value">{}</span></p >'.format(row['file_name'])
+        html += '<p><span class="label">file_path:</span><span class="value">{}</span></p >'.format(row['file_path'])
+        html += '<p><span class="label">creation_time:</span><span class="value">{}</span></p >'.format(row['creation_time'])
+        html += '<p><span class="label">hash:</span><span class="value">{}</span></p >'.format(row['hash'])
+        html += '<p><span class="label">rows:</span><span class="value">{}</span></p >'.format(row['rows'])
+        html += '<p><span class="label">cols:</span><span class="value">{}</span></p >'.format(row['cols'])
+        html += '<p><span class="label">lines:</span><br>'
+        for line in row['lines']:
+            html += '&emsp;' + ' '.join(line) + '<br>'
+        html += '</p >'
+        html += '<br>'
+    html += '</div>'
+    return html
+
 def to_html(df):
     html = '<style> .label { font-weight: bold; color: green; } .value { display: block; margin-left: 2em; max-width: 30ch; word-wrap: break-word; } </style>'
     for _, row in df.iterrows():

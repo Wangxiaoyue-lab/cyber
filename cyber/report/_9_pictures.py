@@ -56,8 +56,51 @@ def add_watermark(image, image_name, date):
     draw.text((x3, y3), text3, fill=(211, 211, 21, 37), font=font)
     return image
 
-def divide_images(processed_images,image_names,html):
-    
+def images_to_div(processed_images,output_folder,image_names):
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    image_path = os.path.join(output_folder,"px_images")
+    os.makedirs(image_path)
+    div = "<div class='pictures'><div class='row'><div id='left' class='left'></div><div id='right' class='right'></div></div></div>"
+    left_column = ""
+    right_column = ""
+    left_height = 0
+    right_height = 0
+    index = 1
+    left_index = 1
+    right_index = 1
+    for i, image in enumerate(processed_images[:260]):
+        image_name = image_names[i]
+        new_image_name = "image_" + str(i) + ".png"
+        new_image_path = os.path.join(image_path, new_image_name)
+        image.save(new_image_path)
+        label1 = string.ascii_uppercase[(index - 1) // 10]
+        if left_height <= right_height:
+            label2 = "L"
+            label3 = left_index
+            left_index += 1
+            left_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
+            left_height += image.height
+        else:
+            label2 = "R"
+            label3 = right_index
+            right_index += 1
+            right_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
+            right_height += image.height
+        index += 1
+
+    if len(processed_images) > 260:
+        warning = "<p style='color:red'>Warning: Too many pictures to read! Just represent top 260 pictures.</p >"
+        left_column += warning
+        right_column += warning
+
+    div = div.replace("<div id='left' class='left'></div>", f"<div id='left' class='left'>{left_column}</div>")
+    div = div.replace("<div id='right' class='right'></div>", f"<div id='right' class='right'>{right_column}</div>")
+    return div
+
+
+
+
 
 def process_images(processed_images, output_folder, image_names):
     if not os.path.exists(output_folder):
