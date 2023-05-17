@@ -1,7 +1,7 @@
 import os
 import argparse
 
-from cyber.utils import check_dir_name
+from cyber_py.utils import check_dir_name
 
 picture_name = 'picture'
 table_name = 'table'

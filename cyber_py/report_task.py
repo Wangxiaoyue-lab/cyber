@@ -4,18 +4,18 @@ import argparse
 from datetime import datetime
 import pandas as pd
 
-from cyber.utils import df_to_div, list_to_div, check_dir_name, report_yaml_update,zip_files
-from cyber.decorate.style import style_dir
-from cyber.decorate.script_js import js_dir
-from cyber.support._1_input_report import get_input_info, get_files_info
-from cyber.support._5_script_report import get_script_info
-from cyber.support._8_tree import generate_file_tree, visualize_file_tree
-from cyber.support._9_pictures import find_images, convert_image, add_watermark, images_to_div
-from cyber.support._10_table_report import get_tables_info, tables_to_div
-from cyber.support._13_supplement import filter_supplement, generate_supplement_div
-from cyber.support._12_packages import get_txts_with_prefix, read_txts
-from cyber.support._14_report import Pre_report_to_div, Post_report_to_div, report_head
-from cyber.support._11_html2pdf import html_to_pdf
+from cyber_py.utils import df_to_div, list_to_div, check_dir_name, report_yaml_update,zip_files
+from cyber_py.decorate.style import style_dir
+from cyber_py.decorate.script_js import js_dir
+from cyber_py.support._1_input_report import get_input_info, get_files_info
+from cyber_py.support._5_script_report import get_script_info
+from cyber_py.support._8_tree import generate_file_tree, visualize_file_tree
+from cyber_py.support._9_pictures import find_images, convert_image, add_watermark, images_to_div
+from cyber_py.support._10_table_report import get_tables_info, tables_to_div
+from cyber_py.support._13_supplement import filter_supplement, generate_supplement_div
+from cyber_py.support._12_packages import get_txts_with_prefix, read_txts
+from cyber_py.support._14_report import Pre_report_to_div, Post_report_to_div, report_head
+from cyber_py.support._11_html2pdf import html_to_pdf
 
 # script_name = 'script'
 # input_name = 'input'
