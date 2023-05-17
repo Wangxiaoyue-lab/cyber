@@ -1,16 +1,8 @@
 Comprehensive Yielding Bioinformatics Electronic Report
 
+This is a preliminary and untested bioinfomatics project standard, please use caution.
 
-```mermaid
-graph cyber
-A[Install] --> B[Create Project]
-B --> C[Initialize Cyber]
-C --> D1[Place Files According to Cyber Standards]
-C --> D2[Connect to Github Infrastructure Repository]
-D1 --> E[Generate Task Report]
-D2 --> E
-E --> F[Generate Project Report]
-```
+If you have and suggestion , contact with me at caojundudu@qq.com
 
 
 # 1.Install
