@@ -1,6 +1,18 @@
 Comprehensive Yielding Bioinformatics Electronic Report
 
 
+```
+graph cyber
+A[Install] --> B[Create Project]
+B --> C[Initialize Cyber]
+C --> D1[Place Files According to Cyber Standards]
+C --> D2[Connect to Github Infrastructure Repository]
+D1 --> E[Generate Task Report]
+D2 --> E
+E --> F[Generate Project Report]
+```
+
+
 # 1.Install
 
 ```shell
@@ -13,7 +25,6 @@ or
 pip install https://github.com/Wangxiaoyue-lab/cyber.git
 ```
 
-
 # 2.Initialize
 
 When you use it in shell:
@@ -25,7 +36,6 @@ python /.../cyber/use/report_project.py /path/of/yout/project
 It will generate a `cyber.yaml` file in the specified path, and the project directory is recommend .
 
 Please fill in the `cyber.yaml` file
-
 
 # 3.Managerment
 
@@ -53,8 +63,11 @@ It is recommended to run the script.
 python /.../cyber/use/formalize.py /path/of/yout/task
 ```
 
+# 4.Pipeline
 
-# 4.Report the task
+
+
+# 5.Report the task
 
 We  should generate a readable and adiaphorous report
 
@@ -62,5 +75,4 @@ We  should generate a readable and adiaphorous report
 python /.../cyber/use/report_task.py /path/of/yout/project/cyber.yaml /path/of/yout/task
 ```
 
-
-# 5.Report summary
+# 6.Report summary
