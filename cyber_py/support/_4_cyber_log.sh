@@ -1,14 +1,16 @@
-get_version() {
-    local cmd=$1
-    local version
-    version=$($cmd -v 2>&1)
-    if [[ $version == *"-v"* ]]; then
-        version=$($cmd --version 2>&1)
-    fi
-    echo "$cmd version: $version"
+cmds=(ls date uname)
+task_path=//
+
+cyber_packages() {
+    local cmds=("$@")
+    for cmd in "${cmds[@]}"; do
+        local version
+        version=$($cmd -v 2>&1)
+        if [[ $version == *"-v"* ]]; then
+            version=$($cmd --version 2>&1)
+        fi
+        echo "$cmd version: $version"
+    done
 }
 
-#e.g.
-cmds=(ls date uname)
-for cmd in "${cmds[@]}"; do
-    get_version $cmd >> loading_packages_shell.txt
+cyber_packages "${cmds[@]}" >> ${task_path}/loading_packages_shell.txt
