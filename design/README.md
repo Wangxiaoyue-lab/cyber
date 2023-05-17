@@ -2,14 +2,11 @@
 
 Comprehensive Yielding Bioinformatics Electronic Report
 
-
-
 注：
 
 script部分可以是snakemake。不过snakemake应该是task内部的设计，不可以跨task
 
 script部分可以是jupyter notebook，不过请图片保存pdf版本一份。juptyter文件转成纯代码一份
-
 
 # 文件结构
 
@@ -83,7 +80,7 @@ task1
 
 ### investigation——调研型task结构
 
-### exotic——外部结果型task结构
+### import——外部结果型task结构
 
 ```
 task1
@@ -129,7 +126,6 @@ task1
 
 ## 调研
 
-
 ## 外部结果
 
 1. input
@@ -144,9 +140,7 @@ task1
 
    1. 将外部分析的结果返回保存
 
-
 ## project合并
-
 
 summarize
 
