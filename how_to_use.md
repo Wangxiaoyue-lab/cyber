@@ -59,7 +59,7 @@ python /.../cyber/use/formalize.py /path/of/yout/task
 We  should generate a readable and adiaphorous report
 
 ```shell
-python /.../cyber/use/formalize.py /path/of/yout/project/cyber.yaml /path/of/yout/task
+python /.../cyber/use/report_task.py /path/of/yout/project/cyber.yaml /path/of/yout/task
 ```
 
 
