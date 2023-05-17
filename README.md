@@ -14,14 +14,24 @@ cyber
 
 # 1.Install
 
+gitclone（recommend）
+
 ```shell
 git clone https://github.com/Wangxiaoyue-lab/cyber.git
 ```
 
 or
 
+pip
+
 ```shell
 pip install https://github.com/Wangxiaoyue-lab/cyber.git
+```
+
+Then please make alias
+
+```shell
+python //////cyber/cyber_py/alias.py
 ```
 
 # 2.Initialize
@@ -29,7 +39,7 @@ pip install https://github.com/Wangxiaoyue-lab/cyber.git
 When you use it in shell:
 
 ```shell
-python /.../cyber/use/report_project.py /path/of/yout/project
+cyber_p /path/of/yout/project
 ```
 
 It will generate a `cyber.yaml` file in the specified path, and the project directory is recommend .
@@ -59,7 +69,7 @@ task1
 It is recommended to run the script.
 
 ```shell
-python /.../cyber/use/formalize.py /path/of/yout/task
+cyber_f /path/of/yout/task
 ```
 
 # 4.Pipeline
@@ -69,7 +79,7 @@ python /.../cyber/use/formalize.py /path/of/yout/task
 We  should generate a readable and adiaphorous report
 
 ```shell
-python /.../cyber/use/report_task.py /path/of/yout/task
+cyber_r /path/of/yout/task
 ```
 
 # 6.Report summary
