@@ -1,7 +1,8 @@
 import os
 import argparse
 
-import .utils
+from .utils import check_dir_name
+
 
 custom = check_dir_name(cyber_yaml)
 input_name = custom['input']
@@ -27,7 +28,7 @@ def create_report_if_not_exists(path):
     file_path = os.path.join(path, 'report.yaml')
     if not os.path.exists(file_path):
         with open(file_path, 'w') as f:
-            f.write('Pre-report: \n  Title: \n  Aim: \n  Date: \n  Location: \n  Operator: \n  Type: \n  Platform: \n\nSupplement: \n  - Name: \n      Path: \n      Details: \n  - Name: \n      Path: \n      Details: \n  - Name: \n      Path: \n      Details: \n\nPost-report: \n  Discussion: \n  Plan: ')
+            f.write('Pre-report: \n  Type: \n  Title: \n  Aim: \n  Date: \n  Location: \n  Laboratory: \n  Operator: \n  Platform: \n\nSupplement: \n  - Name: \n      Path: \n      Details: \n  - Name: \n      Path: \n      Details: \n  - Name: \n      Path: \n      Details: \n\nPost-report: \n  Discussion: \n  Plan: ')
 
 def cyber_task(task_path,script_name,input_name,output_name,report_name,picture_name,table_name,store_name):
     script_path = os.path.join(task_path,script_name)

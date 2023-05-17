@@ -7,7 +7,6 @@ import pandas as pd
 from .utils import df_to_div, list_to_div, check_dir_name, report_yaml_update,zip_files
 from .style import style_dir
 from .script_js import js_dir
-from ..report._7_date_report import get_dates
 from ..report._1_input_report import get_input_info, get_files_info
 from ..report._5_script_report import get_script_info
 from ..report._8_tree import generate_file_tree, visualize_file_tree
