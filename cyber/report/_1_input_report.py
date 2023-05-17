@@ -36,8 +36,7 @@ def sizeof_fmt(num, suffix='B'):
         num /= 1024.0
     return "%.1f%s%s" % (num, 'Y', suffix)
 
-
-def get_files_info(path):
+def get_input_info(path):
     yaml_file = os.path.join(path, 'description.yaml')
     with open(yaml_file, 'r') as f:
         yaml_data = yaml.safe_load(f)
@@ -102,6 +101,56 @@ def get_files_info(path):
                     'SHA256': get_sha256(entry_path),
                     'Description': supplemental_info.get(name, {}).get('Description', ''),
                     'Source': supplemental_info.get(name, {}).get('Source', '')
+                })
+
+    df = pd.DataFrame(data)
+    return df
+
+def get_files_info(path):
+    data = []
+    for name in os.listdir(path):
+        entry_path = os.path.join(path, name)
+        if os.path.isdir(entry_path):
+            if os.path.islink(entry_path):
+                stat = os.lstat(entry_path)
+                data.append({
+                    'Name': name,
+                    'Type': 'Link',
+                    'Path': entry_path,
+                    'Creation time': datetime.fromtimestamp(stat.st_ctime),
+                    'Details': f"ref {os.readlink(entry_path)}",
+                    'SHA256': get_sha256(os.readlink(entry_path)),
+                })
+            else:
+                stat = os.stat(entry_path)
+                data.append({
+                    'Name': name,
+                    'Type': 'Directory',
+                    'Path': entry_path,
+                    'Creation time': datetime.fromtimestamp(stat.st_ctime),
+                    'Details': f"counts {len(os.listdir(entry_path))}",
+                    'SHA256': get_sha256(entry_path),
+                })
+        elif os.path.isfile(entry_path):
+            if os.path.islink(entry_path):
+                stat = os.lstat(entry_path)
+                data.append({
+                    'Name': name,
+                    'Type': 'Link',
+                    'Path': entry_path,
+                    'Creation time': datetime.fromtimestamp(stat.st_ctime),
+                    'Details': f"ref {os.readlink(entry_path)}",
+                    'SHA256': get_sha256(os.readlink(entry_path)),
+                })
+            else:
+                stat = os.stat(entry_path)
+                data.append({
+                    'Name': name,
+                    'Type': 'File',
+                    'Path': entry_path,
+                    'Creation time': datetime.fromtimestamp(stat.st_ctime),
+                    'Details': f"size {sizeof_fmt(stat.st_size)}",
+                    'SHA256': get_sha256(entry_path),
                 })
 
     df = pd.DataFrame(data)
@@ -174,7 +223,7 @@ def main():
     parser.add_argument('output', type=str, help='Path to the output HTML file')
     args = parser.parse_args()
 
-    df = get_files_info(args.path)
+    df = get_input_info(args.path)
     html_table = df.to_html()
 
     with open(args.output, 'w') as f:

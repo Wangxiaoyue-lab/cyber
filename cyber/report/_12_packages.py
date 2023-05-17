@@ -30,7 +30,7 @@ def read_txts(files):
     Returns:
         list: A list of the contents of the text files.
     """
-    result = []+
+    result = []
     if files[0] == 'Unknown':
         result.append('Unknown')
     else:

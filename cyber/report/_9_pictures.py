@@ -79,25 +79,24 @@ def images_to_div(processed_images,output_folder,image_names):
             label2 = "L"
             label3 = left_index
             left_index += 1
-            left_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
+            left_column += f"<img src='{os.path.join('.', 'px_images', new_image_name)}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
             left_height += image.height
         else:
             label2 = "R"
             label3 = right_index
             right_index += 1
-            right_column += f"<img src='{new_image_path}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
+            right_column += f"<img src='{os.path.join('.', 'px_images', new_image_name)}'/><p>{label1}_{label2}_{label3}: {image_name}</p>"
             right_height += image.height
         index += 1
 
     if len(processed_images) > 260:
-        warning = "<p style='color:red'>Warning: Too many pictures to read! Just represent top 260 pictures.</p >"
+        warning = "<p style='color:red'>Warning: Too many pictures to read! Just represent top 260 pictures.</p>"
         left_column += warning
         right_column += warning
 
     div = div.replace("<div id='left' class='left'></div>", f"<div id='left' class='left'>{left_column}</div>")
     div = div.replace("<div id='right' class='right'></div>", f"<div id='right' class='right'>{right_column}</div>")
     return div
-
 
 
 

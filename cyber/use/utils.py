@@ -1,3 +1,7 @@
+import os
+import zipfile
+import yaml
+
 # 数据框生成div块
 def df_to_div(df, class_name):
     """ 
@@ -49,7 +53,7 @@ def check_dir_name(cyber_yaml):
 
 
 # 根据cyber.yaml更新report.yaml
-def report_yaml_update(cyber_yaml,task_path)
+def report_yaml_update(cyber_yaml,task_path):
     """
     Updates the report.yaml file with the relevant information from the cyber.yaml file.
 
@@ -91,4 +95,28 @@ def report_yaml_update(cyber_yaml,task_path)
     report['Pre-report']['Platform'] = cyber['Setting']['Platform'] if not report['Pre-report']['Platform'] else report['Pre-report']['Platform']
  
     with open(report_path, 'w') as f:
-        yaml.dump(report)    
+        yaml.dump(report)
+
+
+#压缩文件为zip
+def zip_files(folder_path, zip_file_name='archive.zip'):
+    zip_file_path = os.path.join(folder_path, zip_file_name)
+    html_found = False
+    with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                if file == 'output_tree_0.png' or file == 'report.yaml' or (file.startswith('Report_the_task_') and (file.endswith('.html') or file.endswith('.pdf'))):
+                    if file.endswith('.html'):
+                        html_found = True
+                    file_path = os.path.join(root, file)
+                    zipf.write(file_path, os.path.relpath(file_path, folder_path))
+            if 'px_images' in dirs:
+                px_images_folder = os.path.join(root, 'px_images')
+                for root2, dirs2, files2 in os.walk(px_images_folder):
+                    for file2 in files2:
+                        file_path2 = os.path.join(root2, file2)
+                        zipf.write(file_path2, os.path.relpath(file_path2, folder_path))
+    if not html_found:
+        print('Error: No HTML file starting with Report_the_task_ found')
+        return
+    print(f'Files zipped to {zip_file_path}')

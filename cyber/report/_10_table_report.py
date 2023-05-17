@@ -4,6 +4,14 @@ from hashlib import sha256
 import argparse
 from datetime import datetime
 
+def read_file_detect(file_path):
+    with open(file_path, 'rb') as f:
+        raw_data = f.read()
+        encoding = chardet.detect(raw_data)['encoding']
+    with open(file_path, 'r', encoding=encoding) as f:
+        content = f.read()
+    return content
+
 def get_tables_info(directory):
     files_info = []
     for root, dirs, files in os.walk(directory):
@@ -17,17 +25,26 @@ def get_tables_info(directory):
                 if os.stat(file_path).st_size == 0:
                     rows, cols = 0, 0
                     lines = []
-                elif file.endswith(('.xls', '.xlsx', '.csv', '.tsv')):
-                    df = pd.read_csv(file_path, sep='\t' if file.endswith('.tsv') else ',')
+                elif file.endswith(('.xls', '.xlsx')):
+                    df = pd.read_excel(file_path)
+                    rows, cols = df.shape
+                    lines = df.iloc[:6, :6].fillna('').applymap(str).apply(lambda x: x.str.slice(0, 30)).values.tolist()
+                    if cols > 6:
+                        for line in lines:
+                            line.append('...')
+                elif file.endswith(('.csv', '.tsv')):
+                    encoding = chardet.detect(content)['encoding']
+                    df = pd.read_csv(file_path, sep='\t' if file.endswith('.tsv') else ',', encoding=encoding)
                     rows, cols = df.shape
                     lines = df.iloc[:6, :6].fillna('').applymap(str).apply(lambda x: x.str.slice(0, 30)).values.tolist()
                     if cols > 6:
                         for line in lines:
                             line.append('...')
                 else:
-                    with open(file_path, 'r') as f:
-                        lines = [f.readline().strip().split()[:6] for _ in range(6)]
-                        rows, cols = len(lines), max(len(line) for line in lines)
+                    content = read_file_detect(file_path)
+                    lines = content.splitlines()[:6]
+                    rows = len(lines)
+                    cols = max(len(line.split()) for line in lines)
                 files_info.append({'file_name': file, 'file_path': file_path, 'creation_time': creation_time, 'hash': hash, 'rows': rows, 'cols': cols, 'lines': lines})
     df = pd.DataFrame(files_info)
     return df

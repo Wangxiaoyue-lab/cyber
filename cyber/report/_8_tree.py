@@ -53,7 +53,7 @@ def tree_to_div(folder_path):
         for i, image in enumerate(images):
             image_name = 'output_tree_{}.png'.format(i)
             image.save(os.path.join(folder_path, image_name), 'PNG')
-            image_paths.append(image_name)
+            image_paths.append(os.path.join('.', image_name))
 
         div_content = ''.join(['<img src="{}">'.format(path) for path in image_paths])
         div_element = '<div class="tree">{}</div>'.format(div_content)
@@ -61,7 +61,7 @@ def tree_to_div(folder_path):
     else:
         print('output_tree.pdf not found in the specified folder')
 
-def main()
+def main():
     parser = argparse.ArgumentParser(description='Get script info')
     parser.add_argument('folder_path', type=str, help='Path to the folder containing scripts')
     parser.add_argument('output', type=str, help='Path to the output HTML file')
