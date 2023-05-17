@@ -97,7 +97,7 @@ style_tables = """
         .tables .value { 
             display: block; 
             margin-left: 2em; 
-            max-width: 30ch; 
+            max-width: 600px; 
             word-wrap: break-word; 
             }
     """

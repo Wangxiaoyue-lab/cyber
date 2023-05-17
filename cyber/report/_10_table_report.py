@@ -63,6 +63,7 @@ def tables_to_div(df):
             html += '&emsp;' + ' '.join(line) + '<br>'
         html += '</p >'
         html += '<br>'
+        html += '<hr>'
     html += '</div>'
     return html
 
