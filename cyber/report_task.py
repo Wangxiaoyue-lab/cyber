@@ -5,17 +5,17 @@ from datetime import datetime
 import pandas as pd
 
 from .utils import df_to_div, list_to_div, check_dir_name, report_yaml_update,zip_files
-from .style import style_dir
-from .script_js import js_dir
-from ..report._1_input_report import get_input_info, get_files_info
-from ..report._5_script_report import get_script_info
-from ..report._8_tree import generate_file_tree, visualize_file_tree
-from ..report._9_pictures import find_images, convert_image, add_watermark, images_to_div
-from ..report._10_table_report import get_tables_info, tables_to_div
-from ..report._13_supplement import filter_supplement, generate_supplement_div
-from ..report._12_packages import get_txts_with_prefix, read_txts
-from ..report._14_report import Pre_report_to_div, Post_report_to_div, report_head
-from ..report._11_html2pdf import html_to_pdf
+from .decorate.style import style_dir
+from .decorate.script_js import js_dir
+from .support._1_input_report import get_input_info, get_files_info
+from .support._5_script_report import get_script_info
+from .support._8_tree import generate_file_tree, visualize_file_tree
+from .support._9_pictures import find_images, convert_image, add_watermark, images_to_div
+from .support._10_table_report import get_tables_info, tables_to_div
+from .support._13_supplement import filter_supplement, generate_supplement_div
+from .support._12_packages import get_txts_with_prefix, read_txts
+from .support._14_report import Pre_report_to_div, Post_report_to_div, report_head
+from .support._11_html2pdf import html_to_pdf
 
 # script_name = 'script'
 # input_name = 'input'
