@@ -1,14 +1,8 @@
 import os
 import argparse
 
-from .utils import check_dir_name
+from cyber.utils import check_dir_name
 
-
-custom = check_dir_name(cyber_yaml)
-input_name = custom['input']
-report_name = custom['report']
-output_name = custom['output']
-script_name = custom['script']
 picture_name = 'picture'
 table_name = 'table'
 store_name = 'store'
@@ -56,7 +50,14 @@ def main():
     parser.add_argument('task_path', type=str, help='Path to the task folder')
     args = parser.parse_args()
     task_path = args.task_path
-    cyber_task(task_path,script_name,input_name,output_name,report_name,picture_name,table_name,store_name,Supplement_name)
+    project_path = os.path.split(task_path)[0]
+    cyber_yaml =  os.path.join(project_path,"cyber.yaml")
+    custom = check_dir_name(cyber_yaml)
+    input_name = custom['input']
+    report_name = custom['report']
+    output_name = custom['output']
+    script_name = custom['script']
+    cyber_task(task_path,script_name,input_name,output_name,report_name,picture_name,table_name,store_name)
 
 if __name__ == '__main__':
     main()
