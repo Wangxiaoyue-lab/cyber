@@ -1,7 +1,7 @@
 Comprehensive Yielding Bioinformatics Electronic Report
 
 
-```
+```mermaid
 graph cyber
 A[Install] --> B[Create Project]
 B --> C[Initialize Cyber]
