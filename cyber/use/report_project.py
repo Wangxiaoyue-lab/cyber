@@ -15,7 +15,7 @@ def main():
     parser = argparse.ArgumentParser(description='Formalize the cyber yaml')
     parser.add_argument('project_path', type=str, help='Path to the project folder')
     args = parser.parse_args()
-    task_path = args.project_path
+    project_path = args.project_path
     start_cyber(project_path)
 
 if(__name__=="__main__"):
