@@ -5,12 +5,12 @@ This is a preliminary and untested bioinfomatics project standard, please use ca
 If you have any suggestion , contact with me at caojundudu@qq.com
 
 # 0.Prepare
+
 You should have these folders in your home directionary:
 project
 software
 reference
 cyber
-
 
 # 1.Install
 
@@ -64,14 +64,12 @@ python /.../cyber/use/formalize.py /path/of/yout/task
 
 # 4.Pipeline
 
-
-
 # 5.Report the task
 
 We  should generate a readable and adiaphorous report
 
 ```shell
-python /.../cyber/use/report_task.py /path/of/yout/project/cyber.yaml /path/of/yout/task
+python /.../cyber/use/report_task.py /path/of/yout/task
 ```
 
 # 6.Report summary

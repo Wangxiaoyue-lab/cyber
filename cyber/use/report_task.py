@@ -352,10 +352,12 @@ def main():
     parser = argparse.ArgumentParser(
         description='Formalize the task folder to adapt cyber')
     parser.add_argument('task_path', type=str, help='Path to the task folder')
-    parser.add_argument('cyber_yaml', type=str, help='Path to the cyber_yaml')
+    #parser.add_argument('cyber_yaml', type=str, help='Path to the cyber_yaml')
     args = parser.parse_args()
     task_path = args.task_path
-    cyber_yaml = args.cyber_yaml
+    project_path = os.path.split(task_path)[0]
+    cyber_yaml =  os.path.join(project_path,"cyber.yaml")
+    #cyber_yaml = args.cyber_yaml
     report_yaml_update(cyber_yaml,task_path)
     report_generate(cyber_yaml, task_path, style_dir, js_dir)
 
