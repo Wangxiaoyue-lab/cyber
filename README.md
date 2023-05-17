@@ -2,7 +2,7 @@ Comprehensive Yielding Bioinformatics Electronic Report
 
 This is a preliminary and untested bioinfomatics project standard, please use caution.
 
-If you have and suggestion , contact with me at caojundudu@qq.com
+If you have any suggestion , contact with me at caojundudu@qq.com
 
 
 # 1.Install
