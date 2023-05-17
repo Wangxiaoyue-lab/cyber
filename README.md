@@ -4,6 +4,13 @@ This is a preliminary and untested bioinfomatics project standard, please use ca
 
 If you have any suggestion , contact with me at caojundudu@qq.com
 
+# 0.Prepare
+You should have these folders in your home directionary:
+project
+software
+reference
+cyber
+
 
 # 1.Install
 
