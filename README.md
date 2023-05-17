@@ -34,7 +34,7 @@ Then please make alias
 python //////cyber/cyber_py/alias.py
 ```
 
-# 2.Initialize
+# 2.Project
 
 When you use it in shell:
 
@@ -46,7 +46,7 @@ It will generate a `cyber.yaml` file in the specified path, and the project dire
 
 Please fill in the `cyber.yaml` file
 
-# 3.Managerment
+# 3.Formalization
 
 A project should be split into several tasks including analysis task, development task, investigation task and import task.
 
@@ -74,7 +74,55 @@ cyber_f /path/of/yout/task
 
 # 4.Pipeline
 
-# 5.Report the task
+
+# 5 Packages
+
+Firstly, get the path of cyber in shell
+
+```shell
+cyber_dir
+```
+
+
+R
+
+```R
+source(past0(cyber_dir,'/cyber_py/support/_2_cyber_log.R'))
+task_path <- "/path/of/task"
+cyber_packages(task_path)
+```
+
+
+
+python
+
+```python
+import sys
+sys.path.append(cyber_dir)
+from cyber_py.support._3_cyber_log import cyber_packages
+task_path = "/path/of/task"
+cyber_packages(task_path)
+```
+
+
+shell
+
+```shell
+cyber_packages() {
+    local cmd=$1
+    local version
+    version=$($cmd -v 2>&1)
+    if [[ $version == *"-v"* ]]; then
+        version=$($cmd --version 2>&1)
+    fi
+    echo "$cmd version: $version"
+}
+
+
+
+```
+
+# 6.Report the task
 
 We  should generate a readable and adiaphorous report
 
@@ -82,4 +130,4 @@ We  should generate a readable and adiaphorous report
 cyber_r /path/of/yout/task
 ```
 
-# 6.Report summary
+# 7.Report summary
