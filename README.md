@@ -6,11 +6,11 @@ If you have any suggestion , contact with me at caojundudu@qq.com
 
 # 0.Prepare
 
-You should have these folders in your home directionary:
-project
-software
-reference
-cyber
+You should have these folders in your home directionary:`<br>`
+project `<br>`
+software `<br>`
+reference `<br>`
+cyber `<br>`
 
 # 1.Install
 
@@ -84,6 +84,9 @@ cyber_dir
 ```
 
 
+copy it 
+
+
 R
 
 ```R
@@ -108,10 +111,8 @@ cyber_packages(task_path)
 shell
 
 ```shell
- 
-
-
-
+cyber_packages ${task_path} ${cmds}
+# e.g. cyber_packages ${task_path} fastp,cellranger,cellbender
 ```
 
 # 6.Report the task
@@ -122,4 +123,4 @@ We  should generate a readable and adiaphorous report
 cyber_r /path/of/yout/task
 ```
 
-# 7.Report summary
+# 7.Summary
