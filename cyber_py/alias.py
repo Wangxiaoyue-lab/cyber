@@ -2,7 +2,7 @@ import os
 
 absolute_path = os.path.split(os.path.realpath(__file__))[0]
 cyber_path = os.path.split(absolute_path)[0]
-alias_cmd_dir = f"alias cyber_dir='pushd {cyber_path} && pwd && popd'"
+alias_cmd_dir = f"alias cyber_dir='(cd {cyber_path} && pwd)'"
 alias_cmd_pacakages = f"alias cyber_pacakages='cd {cyber_path} && python -m cyber_py.support._4_cyber_shell $@ && popd'"
 alias_cmd_p = f"alias cyber_p='pushd {cyber_path} && python -m cyber_py.report_project $@ && popd'"
 alias_cmd_f = f"alias cyber_f='pushd {cyber_path} && python -m cyber_py.formalize $@ && popd'"
