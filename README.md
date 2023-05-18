@@ -108,15 +108,7 @@ cyber_packages(task_path)
 shell
 
 ```shell
-cyber_packages() {
-    local cmd=$1
-    local version
-    version=$($cmd -v 2>&1)
-    if [[ $version == *"-v"* ]]; then
-        version=$($cmd --version 2>&1)
-    fi
-    echo "$cmd version: $version"
-}
+ 
 
 
 
