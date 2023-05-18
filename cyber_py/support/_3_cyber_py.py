@@ -1,7 +1,8 @@
 import os
 import sys
-import session_info
 import argparse
+import session_info
+
 
 def cyber_packages(task_path):
     report_folder = os.path.join(task_path, 'report')

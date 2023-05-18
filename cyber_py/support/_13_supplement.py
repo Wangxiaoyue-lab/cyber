@@ -22,6 +22,5 @@ def generate_supplement_div(data):
 
     return result  
 
-def main():
-    filtered_data = filter_supplement(raw_data)
-    html = generate_supplement_div(filtered_data)    
+#    filtered_data = filter_supplement(raw_data)
+#    html = generate_supplement_div(filtered_data)    

@@ -1,4 +1,5 @@
 import os
+
 absolute_path = os.path.split(os.path.realpath(__file__))[0]
 cyber_path = os.path.split(absolute_path)[0]
 alias_cmd_dir = f"alias cyber_dir='pushd {cyber_path} && pwd && popd'"
@@ -12,4 +13,5 @@ with open(os.path.expanduser("~/.bashrc"),"a") as f:
     f.write(alias_cmd_p + "\n")
     f.write(alias_cmd_f + "\n")
     f.write(alias_cmd_r + "\n")
+
 os.system("source ~/.bashrc")

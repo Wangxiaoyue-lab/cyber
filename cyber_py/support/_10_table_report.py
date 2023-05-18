@@ -1,8 +1,11 @@
 import os
-import pandas as pd
-from hashlib import sha256
 import argparse
 from datetime import datetime
+import chardet
+from hashlib import sha256
+import pandas as pd
+
+
 
 def read_file_detect(file_path):
     with open(file_path, 'rb') as f:
@@ -45,7 +48,15 @@ def get_tables_info(directory):
                     lines = content.splitlines()[:6]
                     rows = len(lines)
                     cols = max(len(line.split()) for line in lines)
-                files_info.append({'file_name': file, 'file_path': file_path, 'creation_time': creation_time, 'hash': hash, 'rows': rows, 'cols': cols, 'lines': lines})
+                files_info.append({
+                    'file_name': file, 
+                    'file_path': file_path, 
+                    'creation_time': creation_time, 
+                    'hash': hash, 
+                    'rows': rows, 
+                    'cols': cols, 
+                    'lines': lines
+                    })
     df = pd.DataFrame(files_info)
     return df
 
@@ -92,7 +103,6 @@ def main():
     html = to_html(df)
     with open(args.output, 'w') as f:
         f.write(html)
-
 
 if __name__ == '__main__':
     main()

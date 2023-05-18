@@ -41,6 +41,5 @@ def read_txts(files):
     return result
 
 
-def main():
-    txts = get_txts_with_prefix(folder_path, prefix)
-    txts = read_txts(txts)
+#    txts = get_txts_with_prefix(folder_path, prefix)
+#    txts = read_txts(txts)
