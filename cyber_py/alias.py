@@ -16,6 +16,6 @@ with open(os.path.expanduser("~/.cyberrc"),"a") as f:
     f.write(alias_cmd_r + "\n")
 
 with open(os.path.expanduser("~/.bashrc"),"a") as f:
-    f.write('if [ -f ~/.cyberrc ]; then source ~/.cyberrc fi\n')
+    f.write('if [ -f ~/.cyberrc ]; then\n source ~/.cyberrc\nfi\n')
 
 os.system("source ~/.bashrc")
