@@ -83,6 +83,7 @@ def report_yaml_update(cyber_yaml,task_path):
         report = yaml.safe_load(f)
     
     # Updates the Date field in the report.yaml file.
+    script_name = check_dir_name(cyber_yaml)['script']
     script_path = os.path.join(task_path,script_name)
     dates_str = get_dates(script_path)
     report['Pre-report']['Date'] = dates_str
