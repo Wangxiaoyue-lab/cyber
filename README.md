@@ -74,7 +74,6 @@ cyber_f /path/of/yout/task
 
 # 4.Pipeline
 
-
 # 5 Packages
 
 Firstly, get the path of cyber in shell
@@ -83,11 +82,21 @@ Firstly, get the path of cyber in shell
 cyber_dir
 ```
 
-
-copy it 
-
+copy it
 
 R
+
+```R
+cyber_packages <- function(task) {
+    today <- Sys.time() %>% as.character %>% gsub(' |-|:','_',.)
+    sink(paste0(task, "/report/loading_packages_R_", today, ".txt"))
+    #print(R.home)
+    print(sessionInfo())
+    sink()
+}
+cyber_packages(project_task)
+
+```
 
 ```R
 source(past0(cyber_dir,'/cyber_py/support/_2_cyber_log.R'))
@@ -95,9 +104,28 @@ task_path <- "/path/of/task"
 cyber_packages(task_path)
 ```
 
-
-
 python
+
+```python
+import os
+import sys
+import session_info
+from datetime import datetime
+report_folder = os.path.join(project_task, 'report')
+if not os.path.exists(report_folder):
+    os.makedirs(report_folder)
+date_name = 'loading_packages_Python_'+datetime.now().strftime("%Y_%m_%d_%H_%M")+'.txt'
+file_name = os.path.join(report_folder, date_name)
+original_stdout = sys.stdout
+with open(file_name, 'w') as f:
+    sys.stdout = f
+    print(sys.executable)
+    session_info.show()
+    sys.stdout = original_stdout
+
+```
+
+直接运行函数可能由于命名空间不统一的问题包不全
 
 ```python
 import sys
@@ -106,7 +134,6 @@ from cyber_py.support._3_cyber_log import cyber_packages
 task_path = "/path/of/task"
 cyber_packages(task_path)
 ```
-
 
 shell
 
