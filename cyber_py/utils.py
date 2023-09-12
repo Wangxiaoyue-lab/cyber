@@ -77,6 +77,7 @@ def report_yaml_update(cyber_yaml,task_path):
         cyber = yaml.safe_load(f)
 
     # Loads the report.yaml file
+    report_name = check_dir_name(cyber_yaml)['report']
     report_path = os.path.join(task_path,report_name,"report.yaml")
     with open(report_path, 'r') as f:
         report = yaml.safe_load(f)
