@@ -9,7 +9,7 @@ from cyber_py.decorate.style import style_dir
 from cyber_py.decorate.script_js import js_dir
 from cyber_py.support._1_input_report import get_input_info, get_files_info
 from cyber_py.support._5_script_report import get_script_info
-from cyber_py.support._8_tree import generate_file_tree, visualize_file_tree
+from cyber_py.support._8_tree import generate_file_tree, visualize_file_tree, tree_to_div
 from cyber_py.support._9_pictures import find_images, convert_image, add_watermark, images_to_div
 from cyber_py.support._10_table_report import get_tables_info, tables_to_div
 from cyber_py.support._13_supplement import filter_supplement, generate_supplement_div

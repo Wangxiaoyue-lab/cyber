@@ -97,9 +97,13 @@ def report_yaml_update(cyber_yaml,task_path):
     report['Pre-report']['Laboratory'] = cyber['Setting']['Laboratory'] if not report['Pre-report']['Laboratory'] else report['Pre-report']['Laboratory']
     report['Pre-report']['Operator'] = cyber['Setting']['Operator'] if not report['Pre-report']['Operator'] else report['Pre-report']['Operator']
     report['Pre-report']['Platform'] = cyber['Setting']['Platform'] if not report['Pre-report']['Platform'] else report['Pre-report']['Platform']
- 
-    with open(report_path, 'w') as f:
-        yaml.dump(report)
+    try:
+        with open(report_path, 'w') as f:
+            yaml.dump(report, f)
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+    #with open(report_path, 'w') as f:
+    #    yaml.dump(report)
 
 
 #压缩文件为zip

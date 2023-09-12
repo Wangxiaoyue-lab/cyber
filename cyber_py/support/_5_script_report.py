@@ -11,30 +11,33 @@ def get_script_info(folder_path):
             file_path = os.path.join(root, file)
             creation_time = os.path.getctime(file_path)
             creation_time = datetime.fromtimestamp(creation_time).strftime('%Y-%m-%d %H:%M:%S')
-            if file.endswith('.py'):
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'Python', 'length': len(script), 'creation_time': creation_time})
-            elif file.endswith('.R'):
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'R', 'length': len(script), 'creation_time': creation_time})
-            elif file.endswith('.sh'):
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'Shell', 'length': len(script), 'creation_time': creation_time})
-            elif file.endswith('.cpp'):
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'C++', 'length': len(script), 'creation_time': creation_time})
-            elif file.endswith('.java'):
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'Java', 'length': len(script), 'creation_time': creation_time})
-            else:
-                with open(file_path, 'r') as f:
-                    script = f.read()
-                    script_info.append({'name': file, 'path': file_path, 'language': 'Other', 'length': len(script), 'creation_time': creation_time})
+            try:
+                if file.endswith('.py'):
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'Python', 'length': len(script), 'creation_time': creation_time})
+                elif file.endswith('.R'):
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'R', 'length': len(script), 'creation_time': creation_time})
+                elif file.endswith('.sh'):
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'Shell', 'length': len(script), 'creation_time': creation_time})
+                elif file.endswith('.cpp'):
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'C++', 'length': len(script), 'creation_time': creation_time})
+                elif file.endswith('.java'):
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'Java', 'length': len(script), 'creation_time': creation_time})
+                else:
+                    with open(file_path, 'r') as f:
+                        script = f.read()
+                        script_info.append({'name': file, 'path': file_path, 'language': 'Other', 'length': len(script), 'creation_time': creation_time})
+            except Exception as e:
+                script_info.append({'name': file, 'path': file_path, 'language': 'Unreadable', 'length': 'Unreadable', 'creation_time': creation_time})
     df = pd.DataFrame(script_info)
     df['prefix'] = df['name'].apply(lambda x: int(x.split('_')[0]) if x.split('_')[0].isdigit() else float('inf'))
     df = df.sort_values(by=['prefix', 'creation_time'])
